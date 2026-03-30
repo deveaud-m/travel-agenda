@@ -2,11 +2,19 @@ import webbrowser
 from pathlib import Path
 
 import click
+import yaml
 
 from . import parser, renderer
 
 OUTPUT_DIR = Path("output")
 TRIPS_DIR = Path("trips")
+SETTINGS_FILE = Path("settings.yaml")
+
+
+def _load_settings() -> dict:
+    if SETTINGS_FILE.exists():
+        return yaml.safe_load(SETTINGS_FILE.read_text()) or {}
+    return {}
 
 
 @click.group()
@@ -24,10 +32,11 @@ def render(yaml_file: Path, no_open: bool):
     except Exception as e:
         raise click.ClickException(f"Could not parse {yaml_file}: {e}")
 
+    settings = _load_settings()
     OUTPUT_DIR.mkdir(exist_ok=True)
     output_path = OUTPUT_DIR / f"{yaml_file.stem}.html"
 
-    renderer.render(trip, output_path, yaml_path=yaml_file)
+    renderer.render(trip, output_path, yaml_path=yaml_file, github_repo=settings.get("github_repo"))
     click.echo(f"✓ Rendered: {output_path}")
 
     if not no_open:
@@ -46,6 +55,9 @@ def serve(yaml_file: Path, port: int):
 @cli.command("render-all")
 def render_all():
     """Render all trips in the trips/ directory and generate an index page."""
+    settings = _load_settings()
+    github_repo = settings.get("github_repo")
+
     OUTPUT_DIR.mkdir(exist_ok=True)
     if not TRIPS_DIR.exists():
         raise click.ClickException("No trips/ directory found.")
@@ -62,7 +74,7 @@ def render_all():
             click.echo(f"  ✗ Skipped {yaml_file.name}: {e}", err=True)
             continue
         output_path = OUTPUT_DIR / f"{yaml_file.stem}.html"
-        renderer.render(trip, output_path, yaml_path=yaml_file)
+        renderer.render(trip, output_path, yaml_path=yaml_file, github_repo=github_repo)
         trips.append((yaml_file.stem, trip))
         click.echo(f"  ✓ {yaml_file.name} → {output_path}")
 

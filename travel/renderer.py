@@ -23,7 +23,7 @@ CITY_COLORS = [
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 
 
-def render(trip: Trip, output_path: Path, yaml_path: Optional[Path] = None) -> None:
+def render(trip: Trip, output_path: Path, yaml_path: Optional[Path] = None, github_repo: Optional[str] = None) -> None:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     env.filters["date_fmt"] = _date_fmt
     env.filters["day_fmt"] = _day_fmt
@@ -37,6 +37,10 @@ def render(trip: Trip, output_path: Path, yaml_path: Optional[Path] = None) -> N
 
     yaml_content = yaml_path.read_text(encoding="utf-8") if yaml_path else ""
     yaml_filename = yaml_path.name if yaml_path else "trip.yaml"
+    github_edit_url = (
+        f"https://github.dev/{github_repo}/blob/main/trips/{yaml_filename}"
+        if github_repo else None
+    )
 
     template = env.get_template("agenda.html.j2")
     html = template.render(
@@ -45,6 +49,7 @@ def render(trip: Trip, output_path: Path, yaml_path: Optional[Path] = None) -> N
         today=date.today(),
         yaml_content=yaml_content,
         yaml_filename=yaml_filename,
+        github_edit_url=github_edit_url,
     )
     output_path.write_text(html, encoding="utf-8")
 
