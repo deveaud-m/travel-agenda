@@ -1,0 +1,120 @@
+title: Japan Spring 2026
+
+cities:
+  - name: Tokyo
+    country: Japan
+    arrival: 2026-04-01
+    departure: 2026-04-05
+    notes: Stay in Shinjuku area
+    days:
+      - date: 2026-04-02
+        activities:
+          - name: Shinjuku Gyoen
+            time: "10:00"
+            category: nature
+            notes: Cherry blossom season, best in the morning
+          - name: Ramen Nagi
+            time: "13:00"
+            category: food
+            notes: Counter seats, cash only
+          - name: TeamLab Borderless
+            time: "17:00"
+            category: entertainment
+            booking: required
+      - date: 2026-04-03
+        activities:
+          - name: Tsukiji Outer Market
+            time: "08:00"
+            category: food
+            notes: Fresh seafood breakfast
+          - name: Senso-ji Temple
+            time: "11:00"
+            category: culture
+            notes: Arrive early to avoid crowds
+          - name: Akihabara
+            time: "15:00"
+            category: shopping
+      - date: 2026-04-04
+        activities:
+          - name: Harajuku & Takeshita Street
+            time: "11:00"
+            category: shopping
+          - name: Meiji Shrine
+            time: "13:30"
+            category: culture
+          - name: Shibuya Crossing at night
+            time: "20:00"
+            category: general
+            notes: Best viewed from Starbucks or Mag's Park rooftop
+
+  - name: Kyoto
+    country: Japan
+    arrival: 2026-04-05
+    departure: 2026-04-08
+    notes: Take the Shinkansen from Shinagawa, ~2h15
+    days:
+      - date: 2026-04-05
+        activities:
+          - name: Shinkansen to Kyoto
+            time: "09:00"
+            category: transport
+            booking: required
+          - name: Fushimi Inari Shrine
+            time: "14:00"
+            category: culture
+            notes: Sunset hike up the torii gates
+      - date: 2026-04-06
+        activities:
+          - name: Arashiyama Bamboo Grove
+            time: "08:30"
+            category: nature
+            notes: Go early, very crowded by 10am
+          - name: Tenryu-ji Garden
+            time: "10:00"
+            category: nature
+            booking: optional
+          - name: Nishiki Market
+            time: "13:30"
+            category: food
+            notes: Street food paradise
+      - date: 2026-04-07
+        activities:
+          - name: Philosopher's Path
+            time: "09:00"
+            category: nature
+            notes: Cherry blossoms along the canal
+          - name: Ginkaku-ji (Silver Pavilion)
+            time: "10:30"
+            category: culture
+          - name: Pontocho Alley dinner
+            time: "19:00"
+            category: food
+            notes: Book in advance — restaurant TBD
+            booking: required
+
+  - name: Osaka
+    country: Japan
+    arrival: 2026-04-08
+    departure: 2026-04-10
+    days:
+      - date: 2026-04-08
+        activities:
+          - name: Train to Osaka
+            time: "10:00"
+            category: transport
+          - name: Dotonbori
+            time: "14:00"
+            category: general
+            notes: Street food, neon signs, canal walk
+      - date: 2026-04-09
+        activities:
+          - name: Osaka Castle
+            time: "09:30"
+            category: culture
+          - name: Kuromon Ichiba Market
+            time: "13:00"
+            category: food
+          - name: Shinsekai district
+            time: "17:00"
+            category: general
+            notes: Try kushikatsu (deep-fried skewers)

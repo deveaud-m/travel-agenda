@@ -1,0 +1,21 @@
+<div class="activity-card">
+  <div class="activity-top">
+    {% if a.time %}<span class="activity-time">{{ a.time }}</span>{% endif %}
+    <span class="activity-icon">{{ a.icon }}</span>
+    <span class="activity-name">{{ a.name }}</span>
+  </div>
+  {% if a.notes %}<div class="activity-notes">{{ a.notes }}</div>{% endif %}
+  {% if a.address %}
+  <a class="activity-address" href="{{ a.address | maplink }}" target="_blank" rel="noopener">
+    📍 {{ a.address }}
+  </a>
+  {% endif %}
+  {% if a.booking %}
+  <span class="activity-booking booking-{{ a.booking }}">
+    {%- if a.booking == 'done' %}✓ booked
+    {%- elif a.booking == 'required' %}booking required
+    {%- else %}booking optional
+    {%- endif %}
+  </span>
+  {% endif %}
+</div>

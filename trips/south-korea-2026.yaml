@@ -1,0 +1,200 @@
+title: South Korea 2026
+
+cities:
+  - name: Seoul
+    country: South Korea
+    arrival: 2026-05-24
+    departure: 2026-05-28
+    accommodation:           # fill in your hotel/apartment name
+    accommodation_address:   # fill in your accommodation address
+
+    days:
+      - date: 2026-05-24     # day 1 — Historic Center
+        activities:
+          - name: Breakfast in Myeong-dong
+            time: "08:00"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: Gyeongbokgung Palace
+            time: "09:00"
+            category: culture
+            notes: Hanbok rental optional
+            address: Gyeongbokgung, Seoul
+          - name: Bukchon Hanok Village
+            time: "10:30"
+            category: culture
+            address: Bukchon Hanok Village, Seoul
+          - name: Lunch in Insadong
+            time: "12:00"
+            category: food
+            address: Insadong, Seoul
+          - name: Insadong galleries
+            time: "14:00"
+            category: culture
+            address: Insadong, Seoul
+          - name: Street food dinner
+            time: "18:30"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: Rooftop bar & Korean massage
+            time: "20:00"
+            category: entertainment
+            address: Central Seoul
+
+      - date: 2026-05-25     # day 2 — Pop Culture & Cooking
+        activities:
+          - name: Breakfast
+            time: "08:00"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: Hongdae — street art & shops
+            time: "09:00"
+            category: shopping
+            address: Hongdae, Seoul
+          - name: Korean cooking class
+            time: "12:00"
+            category: culture
+            notes: 2–2.5h, Hongdae or central area
+            address: Hongdae, Seoul
+          - name: Arcade & VR experience
+            time: "14:30"
+            category: entertainment
+            address: Hongdae, Seoul
+          - name: Dinner in Hongdae
+            time: "18:30"
+            category: food
+            address: Hongdae, Seoul
+          - name: Bar evening
+            time: "20:00"
+            category: entertainment
+            address: Hongdae, Seoul
+
+      - date: 2026-05-26     # day 3 — DMZ
+        activities:
+          - name: Early breakfast
+            time: "08:00"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: DMZ Tour — Tunnel & Observatory
+            time: "09:00"
+            category: culture
+            notes: Full day excursion, book in advance
+            address: Korean Demilitarized Zone
+            booking: required
+          - name: Return to Seoul
+            time: "15:00"
+            category: transport
+          - name: Dinner
+            time: "18:30"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: Relaxed evening
+            time: "20:00"
+            category: general
+
+      - date: 2026-05-27     # day 4 — Gangnam & Skyline
+        activities:
+          - name: Breakfast
+            time: "08:00"
+            category: food
+            address: Myeong-dong, Seoul
+          - name: Starfield Library
+            time: "09:00"
+            category: culture
+            address: COEX Mall, Seoul
+          - name: Lunch in Gangnam
+            time: "12:00"
+            category: food
+            address: Gangnam, Seoul
+          - name: Lotte World Tower — Seoul Sky
+            time: "14:00"
+            category: entertainment
+            notes: Seoul Sky observation deck optional
+            address: Jamsil, Seoul
+          - name: Dinner in Jamsil
+            time: "18:30"
+            category: food
+            address: Jamsil, Seoul
+          - name: Banpo Bridge & Han River evening
+            time: "20:00"
+            category: general
+            address: Banpo Bridge, Seoul
+
+  - name: Gyeongju
+    country: South Korea
+    arrival: 2026-05-28
+    departure: 2026-05-31
+    accommodation:           # fill in
+    accommodation_address:   # fill in
+
+    days:
+      - date: 2026-05-28     # day 5 — Historic Center
+        activities:
+          - name: KTX to Gyeongju
+            time: "08:00"
+            category: transport
+            address: Seoul Station
+            booking: required
+          - name: Daereungwon Tomb Complex
+            time: "10:30"
+            category: culture
+            address: Gyeongju
+          - name: Lunch
+            time: "12:30"
+            category: food
+            address: Gyeongju city center
+          - name: Donggung Palace & Wolji Pond
+            time: "14:00"
+            category: culture
+            address: Gyeongju
+          - name: Traditional dinner
+            time: "18:30"
+            category: food
+            address: Gyeongju
+
+      - date: 2026-05-29     # day 6 — Tohamsan Hike
+        activities:
+          - name: Breakfast
+            time: "08:00"
+            category: food
+            address: Gyeongju
+          - name: Hike from Bulguksa Temple
+            time: "09:00"
+            category: sport
+            address: Bulguksa Temple, Gyeongju
+          - name: Summit — Tohamsan
+            time: "11:30"
+            category: sport
+            notes: Summit break
+            address: Tohamsan Mountain, Gyeongju
+          - name: Seokguram Grotto
+            time: "13:00"
+            category: culture
+            address: Seokguram, Gyeongju
+          - name: Return to city
+            time: "16:00"
+            category: transport
+            address: Gyeongju
+          - name: Recovery dinner
+            time: "18:30"
+            category: food
+            address: Gyeongju
+
+      - date: 2026-05-30     # day 7 — Nature & Culture
+        activities:
+          - name: Golgulsa Temple
+            time: "09:00"
+            category: culture
+            address: Golgulsa, Gyeongju
+          - name: Lunch
+            time: "12:00"
+            category: food
+            address: Gyeongju
+          - name: Yangdong Folk Village
+            time: "14:00"
+            category: culture
+            address: Yangdong Folk Village, Gyeongju
+          - name: Dinner
+            time: "18:30"
+            category: food
+            address: Gyeongju

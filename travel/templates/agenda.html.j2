@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ trip.title }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f1ede8;
+      color: #1a1a1a;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .trip-header {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      padding: 1.75rem 1.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .trip-header-left { flex: 1; min-width: 0; }
+    .trip-header h1 {
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.25rem;
+    }
+    .trip-dates { font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.75rem; }
+    .city-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .city-pill {
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid;
+    }
+    .edit-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .edit-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── Timeline ── */
+    .timeline-wrapper {
+      overflow-x: auto;
+      padding: 1.5rem 1rem 2.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .timeline {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      min-width: max-content;
+    }
+
+    /* ── City group ── */
+    .city-group {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+    }
+    .city-band {
+      padding: 0.55rem 1rem;
+      background: var(--city-color);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .city-band-dates { font-weight: 400; opacity: 0.85; font-size: 0.8rem; }
+    .city-notes-strip {
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      color: #475569;
+      font-style: italic;
+      background: color-mix(in srgb, var(--city-color) 7%, white);
+      border-bottom: 1px solid color-mix(in srgb, var(--city-color) 15%, transparent);
+    }
+
+    /* ── Days grid
+         Rows: day-header | morning | afternoon | evening | accommodation
+         Each row spans all day columns → CSS grid equalizes row heights automatically
+    ── */
+    .days-grid {
+      display: grid;
+      column-gap: 1px;
+      background: #ddd9d3; /* shows through column gaps as separators */
+    }
+
+    .day-header-cell {
+      background: color-mix(in srgb, var(--city-color) 6%, white);
+      border-bottom: 2px solid var(--city-color);
+      padding: 0.55rem 0.75rem 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .day-header-cell.is-today {
+      background: color-mix(in srgb, var(--city-color) 8%, #fffcf0);
+    }
+    .day-header-cell h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .today-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      background: #fbbf24;
+      color: #78350f;
+      margin-left: auto;
+    }
+
+    .slot-cell {
+      background: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 80px;
+    }
+    .slot-cell.afternoon,
+    .slot-cell.evening {
+      border-top: 1px solid #ede9e3;
+    }
+    .slot-cell.is-today { background: #fffcf0; }
+
+    .slot-label {
+      padding: 0.35rem 0.75rem 0.2rem;
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .slot-activities {
+      padding: 0 0.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .slot-empty {
+      margin: 0 0.5rem 0.5rem;
+      padding: 0.45rem 0.5rem;
+      border: 1.5px dashed #dde1e7;
+      border-radius: 7px;
+      font-size: 0.73rem;
+      color: #c8cfd9;
+      text-align: center;
+      font-style: italic;
+      flex: 1;
+    }
+
+    /* ── Activity card ── */
+    .activity-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.45rem 0.55rem;
+      border-radius: 7px;
+      background: #f8f6f2;
+      border-left: 3px solid var(--city-color);
+    }
+    .slot-cell.is-today .activity-card { background: #fef6e0; }
+    .activity-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+    .activity-time {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--city-color);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      padding-top: 0.05rem;
+    }
+    .activity-icon { font-size: 0.85rem; flex-shrink: 0; padding-top: 0.05rem; }
+    .activity-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    .activity-notes {
+      font-size: 0.73rem;
+      color: #64748b;
+      padding-left: 0.1rem;
+      line-height: 1.35;
+    }
+    .activity-booking {
+      display: inline-block;
+      margin-top: 0.15rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+    .booking-required { background: #fee2e2; color: #b91c1c; }
+    .booking-optional  { background: #fef9c3; color: #854d0e; }
+    .booking-done      { background: #dcfce7; color: #166534; }
+    .activity-address {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.7rem;
+      color: #2563eb;
+      text-decoration: none;
+      margin-top: 0.1rem;
+      line-height: 1.3;
+    }
+    .activity-address:hover { text-decoration: underline; }
+
+    /* ── Accommodation row ── */
+    .accommodation-cell {
+      background: color-mix(in srgb, var(--city-color) 8%, #f8f6f2);
+      border-top: 2px solid color-mix(in srgb, var(--city-color) 25%, #ddd9d3);
+      padding: 0.45rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: #475569;
+      font-weight: 500;
+      min-height: 36px;
+    }
+    .accommodation-cell.is-today {
+      background: color-mix(in srgb, var(--city-color) 10%, #fef9ec);
+    }
+    .accommodation-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    /* ── Edit modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+      padding: 1.1rem 1.25rem 0.9rem;
+      border-bottom: 1px solid #e8e5e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-header h2 { font-size: 1rem; font-weight: 700; }
+    .modal-hint { font-size: 0.78rem; color: #64748b; margin-top: 0.15rem; }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #64748b;
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      line-height: 1;
+    }
+    .modal-close:hover { background: #f1f5f9; color: #0f172a; }
+    .modal-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+    #yaml-editor {
+      flex: 1;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      border: none;
+      outline: none;
+      resize: none;
+      color: #1e293b;
+      background: #f8fafc;
+      min-height: 300px;
+      max-height: 60vh;
+    }
+    .modal-footer {
+      padding: 0.85rem 1.25rem;
+      border-top: 1px solid #e8e5e0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .modal-error { font-size: 0.8rem; color: #b91c1c; margin-right: auto; display: none; }
+    .btn {
+      padding: 0.5rem 1.1rem;
+      border-radius: 7px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s;
+    }
+    .btn-ghost { background: #f1f5f9; color: #475569; }
+    .btn-ghost:hover { background: #e2e8f0; }
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-primary:disabled { background: #93c5fd; cursor: not-allowed; }
+
+    @media print {
+      .edit-btn, .modal-overlay { display: none !important; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="trip-header">
+  <div class="trip-header-left">
+    <h1>{{ trip.title }}</h1>
+    <p class="trip-dates">{{ trip.start_date | date_fmt }} → {{ trip.end_date | date_fmt }}</p>
+    <div class="city-pills">
+      {% for city in trip.cities %}
+      <span class="city-pill" style="border-color: {{ city_colors[city.name] }}; color: {{ city_colors[city.name] }}">
+        {{ city.name }}{% if city.country %}, {{ city.country }}{% endif %}
+      </span>
+      {% endfor %}
+    </div>
+  </div>
+  <button class="edit-btn" onclick="openEditor()">✏️ Edit agenda</button>
+</header>
+
+<div class="timeline-wrapper">
+  <div class="timeline">
+    {% for city in trip.cities %}
+    <div class="city-group" style="--city-color: {{ city_colors[city.name] }}">
+
+      <div class="city-band">
+        <span>{{ city.name }}{% if city.country %}&thinsp;·&thinsp;{{ city.country }}{% endif %}</span>
+        <span class="city-band-dates">{{ city.arrival | date_fmt }} → {{ city.departure | date_fmt }}</span>
+      </div>
+
+      {% if city.notes %}
+      <div class="city-notes-strip">{{ city.notes }}</div>
+      {% endif %}
+
+      {# CSS grid: each "row" covers all day columns, so row heights are equal across days #}
+      <div class="days-grid" style="grid-template-columns: repeat({{ city.days | length }}, 200px)">
+
+        {# ── Row 1: Day headers ── #}
+        {% for day in city.days %}
+        <div class="day-header-cell{% if day.date == today %} is-today{% endif %}">
+          <h3>{{ day.date | short_day }}</h3>
+          {% if day.date == today %}<span class="today-badge">Today</span>{% endif %}
+        </div>
+        {% endfor %}
+
+        {# ── Row 2: Morning ── #}
+        {% for day in city.days %}
+        {% set acts = day.activities | selectattr('slot', 'equalto', 'morning') | list %}
+        <div class="slot-cell morning{% if day.date == today %} is-today{% endif %}">
+          <div class="slot-label">☀️ Morning</div>
+          {% if acts %}
+          <div class="slot-activities">
+            {% for a in acts %}{% include '_activity.html.j2' %}{% endfor %}
+          </div>
+          {% else %}
+          <div class="slot-empty">free</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        {# ── Row 3: Afternoon ── #}
+        {% for day in city.days %}
+        {% set acts = day.activities | selectattr('slot', 'equalto', 'afternoon') | list %}
+        <div class="slot-cell afternoon{% if day.date == today %} is-today{% endif %}">
+          <div class="slot-label">🌤️ Afternoon</div>
+          {% if acts %}
+          <div class="slot-activities">
+            {% for a in acts %}{% include '_activity.html.j2' %}{% endfor %}
+          </div>
+          {% else %}
+          <div class="slot-empty">free</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        {# ── Row 4: Evening ── #}
+        {% for day in city.days %}
+        {% set acts = day.activities | selectattr('slot', 'equalto', 'evening') | list %}
+        <div class="slot-cell evening{% if day.date == today %} is-today{% endif %}">
+          <div class="slot-label">🌙 Evening</div>
+          {% if acts %}
+          <div class="slot-activities">
+            {% for a in acts %}{% include '_activity.html.j2' %}{% endfor %}
+          </div>
+          {% else %}
+          <div class="slot-empty">free</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        {# ── Row 5: Accommodation ── #}
+        {% for day in city.days %}
+        <div class="accommodation-cell{% if day.date == today %} is-today{% endif %}">
+          {% if city.accommodation and day.date < city.departure %}
+          <span>🏠</span>
+          <div class="accommodation-body">
+            <span>{{ city.accommodation }}</span>
+            {% if city.accommodation_address %}
+            <a class="activity-address" href="{{ city.accommodation_address | maplink }}" target="_blank" rel="noopener">
+              📍 {{ city.accommodation_address }}
+            </a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+      </div>{# /days-grid #}
+    </div>{# /city-group #}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Edit modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>Edit agenda</h2>
+        <p class="modal-hint" id="modal-hint"></p>
+      </div>
+      <button class="modal-close" onclick="closeEditor()" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <textarea id="yaml-editor" spellcheck="false"></textarea>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-error" id="modal-error"></span>
+      <button class="btn btn-ghost" onclick="closeEditor()">Cancel</button>
+      <button class="btn btn-primary" id="save-btn" onclick="saveYaml()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const YAML_CONTENT = {{ yaml_content | tojson }};
+  const YAML_FILENAME = {{ yaml_filename | tojson }};
+  const isServed = window.location.protocol !== 'file:';
+
+  const overlay = document.getElementById('modal-overlay');
+  const editor  = document.getElementById('yaml-editor');
+  const saveBtn = document.getElementById('save-btn');
+  const errMsg  = document.getElementById('modal-error');
+  const hint    = document.getElementById('modal-hint');
+
+  function openEditor() {
+    editor.value = YAML_CONTENT;
+    errMsg.style.display = 'none';
+    saveBtn.disabled = false;
+    saveBtn.textContent = isServed ? 'Save' : 'Download YAML';
+    hint.textContent = isServed
+      ? 'Changes are saved directly and the page will refresh.'
+      : 'Download the updated file, replace the original, then re-run: travel render';
+    overlay.classList.add('open');
+    editor.focus();
+  }
+
+  function closeEditor() { overlay.classList.remove('open'); }
+
+  function handleOverlayClick(e) {
+    if (e.target === overlay) closeEditor();
+  }
+
+  async function saveYaml() {
+    const content = editor.value;
+    errMsg.style.display = 'none';
+
+    if (!isServed) {
+      const blob = new Blob([content], { type: 'text/yaml' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = YAML_FILENAME;
+      a.click();
+      return;
+    }
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+    try {
+      const resp = await fetch('/save', { method: 'POST', body: content });
+      if (resp.ok) {
+        window.location.reload();
+      } else {
+        errMsg.textContent = 'Error: ' + await resp.text();
+        errMsg.style.display = 'block';
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save';
+      }
+    } catch (e) {
+      errMsg.textContent = 'Could not reach the server.';
+      errMsg.style.display = 'block';
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save';
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeEditor(); });
+
+  // Live reload: poll for file changes when served locally
+  if (isServed) {
+    let lastMtime = null;
+    setInterval(async () => {
+      try {
+        const mtime = await fetch('/mtime').then(r => r.text());
+        if (lastMtime === null) { lastMtime = mtime; return; }
+        if (mtime !== lastMtime) window.location.reload();
+      } catch (_) { /* server restarting, ignore */ }
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+title: Berlin 2026
+
+cities:
+  - name: Berlin
+    country: Germany
+    arrival: 2026-04-02
+    departure: 2026-04-06
+    accommodation: Apartment Mitte
+    accommodation_address: Behrenstraße 1C, 10117 Berlin
+    days:
+      - date: 2026-04-02
+        activities:
+          - name: Arrive at Berlin Hauptbahnhof from Munich
+            time: "17:23"
+            category: transport
+            address: Europaplatz 1, 10557 Berlin
+          - name: Check in to apartment
+            category: general
+            time: "18:30"
+          - name: Evening Walk at the Brandenburger Tor
+            category: general
+            time: "19:00"
+          - name: Dinner @ BLESS 
+            time: "20:00"
+            category: food
+            address: Hausvogteipl. 10, 10117 Berlin
+            booking: done
+      - date: 2026-04-03
+        activities:
+          - name: Bunkers visit
+            time: "10:00"
+            category: culture
+            notes: Berliner Unterwelten
+            address: Brunnenstraße 105, 13355 Berlin
+            booking: done
+          - name: Museum Island
+            time: "13:30"
+            category: culture
+            notes: 10 min walk from the bunkers area
+            address: Am Lustgarten, 10178 Berlin
+          - name: Shopping at Hackescher Markt
+            time: "17:00"
+            category: shopping
+            notes: 5 min walk from Museum Island
+            address: Hackescher Markt, 10178 Berlin
+
+      - date: 2026-04-04
+        activities:
+          - name: Guided city tour
+            time: "10:00"
+            category: culture
+            notes: Starts in front of the Rotes Rathaus
+            address: Rathausstraße 15, 10178 Berlin
+            booking: done
+          - name: Birthday dinner at Mastan
+            time: "19:15"
+            category: food
+            notes: Reservation confirmed
+            address: Gneisenaustraße 67, 10961 Berlin
+            booking: done
+
+      - date: 2026-04-05
+        activities:
+          - name: Mauerpark flea market
+            time: "10:00"
+            category: general
+            notes: Sunday flea market — swap for Tempelhofer Feld if the weather is nice
+            address: Bernauer Str. 63-64, 13355 Berlin
+          - name: Circus show BELLO!
+            time: "18:00"
+            notes: Entrance 15 minutes for the show 
+            category: entertainment
+            address: Rosenthaler Str. 40/41, 10178 Berlin
+            booking: done
+
+      - date: 2026-04-06
+        activities:
+          - name: Free morning
+            time: "10:00"
+            category: general
+          - name: Train back to Munich
+            time: "14:36"
+            category: transport
+            address: Europaplatz 1, 10557 Berlin

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Trips</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f1ede8;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.3rem;
+    }
+    header p { font-size: 0.95rem; opacity: 0.65; }
+
+    .trips-grid {
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .trip-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .trip-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+      transform: translateY(-2px);
+    }
+    .trip-card-banner {
+      height: 6px;
+      background: var(--color);
+    }
+    .trip-card-body {
+      padding: 1.1rem 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    .trip-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .trip-card-dates {
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+    .trip-card-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+    .city-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color) 12%, white);
+      color: color-mix(in srgb, var(--color) 80%, #1a1a1a);
+      border: 1px solid color-mix(in srgb, var(--color) 25%, transparent);
+    }
+    .trip-card-footer {
+      padding: 0.6rem 1.2rem;
+      border-top: 1px solid #f0ece6;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✈️ Our Trips</h1>
+  <p>{{ trips | length }} trip{{ 's' if trips | length != 1 }} planned</p>
+</header>
+
+<div class="trips-grid">
+  {% for item in trips %}
+  <a class="trip-card" href="{{ item.filename }}" style="--color: {{ item.color }}">
+    <div class="trip-card-banner"></div>
+    <div class="trip-card-body">
+      <div class="trip-card-title">{{ item.trip.title }}</div>
+      <div class="trip-card-dates">{{ item.trip.start_date | date_fmt }} → {{ item.trip.end_date | date_fmt }}</div>
+      <div class="trip-card-cities">
+        {% for city in item.trip.cities %}
+        <span class="city-tag">{{ city.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="trip-card-footer">
+      <span>{{ item.trip.duration }} nights</span>
+      <span>→</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+</body>
+</html>
