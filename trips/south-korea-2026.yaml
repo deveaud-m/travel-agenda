@@ -5,16 +5,42 @@ cities:
     country: South Korea
     arrival: 2026-05-24
     departure: 2026-05-28
-    accommodation:           # fill in your hotel/apartment name
-    accommodation_address:   # fill in your accommodation address
+    accommodation: Dadu House
+    accommodation_address: 49 Toegye-ro 18-gil, Jung-gu, Seoul
 
     days:
-      - date: 2026-05-24     # day 1 — Historic Center
+      - date: 2026-05-24     # day 1 — Arrival
         activities:
-          - name: Breakfast in Myeong-dong
-            time: "08:00"
+          - name: Arrive Seoul
+            time: "11:00"
+            category: transport
+            notes: Check in, freshen up
+          - name: Lunch in Insadong
+            time: "13:00"
             category: food
+            address: Insadong, Seoul
+          - name: Insadong galleries
+            time: "14:30"
+            category: culture
+            address: Insadong, Seoul
+          - name: Street food snack in Myeong-dong
+            time: "17:00"
+            category: food
+            notes: Quick bite before heading up Namsan — 15 min walk to the cable car
             address: Myeong-dong, Seoul
+          - name: N Seoul Tower — sunset
+            time: "18:30"
+            category: entertainment
+            notes: Take the cable car from Myeong-dong, arrive before sunset
+            address: 105 Namsangongwon-ro, Yongsan-gu, Seoul
+          - name: Korean massage
+            time: "20:30"
+            category: general
+            notes: Good spot to unwind after the journey
+            address: Myeong-dong, Seoul
+
+      - date: 2026-05-25     # day 2 — Historic Center & Pop Culture
+        activities:
           - name: Gyeongbokgung Palace
             time: "09:00"
             category: culture
@@ -23,51 +49,20 @@ cities:
           - name: Bukchon Hanok Village
             time: "10:30"
             category: culture
+            notes: 5 min walk from the palace
             address: Bukchon Hanok Village, Seoul
-          - name: Lunch in Insadong
-            time: "12:00"
+          - name: Lunch near Bukchon
+            time: "12:30"
             category: food
             address: Insadong, Seoul
-          - name: Insadong galleries
+          - name: Korean cooking class
             time: "14:00"
             category: culture
-            address: Insadong, Seoul
-          - name: Street food dinner
-            time: "18:30"
+            notes: 2–2.5h, central area — stays in the downtown corridor
+          - name: Dinner near Myeong-dong
+            time: "19:00"
             category: food
             address: Myeong-dong, Seoul
-          - name: Rooftop bar & Korean massage
-            time: "20:00"
-            category: entertainment
-            address: Central Seoul
-
-      - date: 2026-05-25     # day 2 — Pop Culture & Cooking
-        activities:
-          - name: Breakfast
-            time: "08:00"
-            category: food
-            address: Myeong-dong, Seoul
-          - name: Hongdae — street art & shops
-            time: "09:00"
-            category: shopping
-            address: Hongdae, Seoul
-          - name: Korean cooking class
-            time: "12:00"
-            category: culture
-            notes: 2–2.5h, Hongdae or central area
-            address: Hongdae, Seoul
-          - name: Arcade & VR experience
-            time: "14:30"
-            category: entertainment
-            address: Hongdae, Seoul
-          - name: Dinner in Hongdae
-            time: "18:30"
-            category: food
-            address: Hongdae, Seoul
-          - name: Bar evening
-            time: "20:00"
-            category: entertainment
-            address: Hongdae, Seoul
 
       - date: 2026-05-26     # day 3 — DMZ
         activities:
@@ -84,13 +79,16 @@ cities:
           - name: Return to Seoul
             time: "15:00"
             category: transport
-          - name: Dinner
-            time: "18:30"
+          - name: Dinner near hotel
+            time: "18:00"
             category: food
+            notes: Rest after the DMZ — eat close to Myeong-dong
             address: Myeong-dong, Seoul
-          - name: Relaxed evening
+          - name: Hongdae — street art, shops & arcade
             time: "20:00"
-            category: general
+            category: entertainment
+            notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
+            address: Hongdae, Seoul
 
       - date: 2026-05-27     # day 4 — Gangnam & Skyline
         activities:
@@ -124,8 +122,9 @@ cities:
     country: South Korea
     arrival: 2026-05-28
     departure: 2026-05-31
-    accommodation:           # fill in
-    accommodation_address:   # fill in
+
+    accommodation: Hanok Raon
+    accommodation_address: 11-8 Geumseong-ro 182beon-gil, Gyeongju 38167
 
     days:
       - date: 2026-05-28     # day 5 — Historic Center
@@ -198,3 +197,184 @@ cities:
             time: "18:30"
             category: food
             address: Gyeongju
+
+  - name: Busan
+    country: South Korea
+    arrival: 2026-05-31
+    departure: 2026-06-03
+    accommodation: Nampo Ocean2Heaven
+    accommodation_address: 21 Jagalchi-ro, Jung-gu, Busan 600-046
+
+    days:
+      - date: 2026-05-31
+        activities:
+          - name: KTX to Busan
+            time: "09:00"
+            category: transport
+            notes: ~45 min from Gyeongju
+            address: Gyeongju Station
+            booking: required
+          - name: Gamcheon Culture Village
+            time: "11:30"
+            category: culture
+            notes: Colourful hillside village, plan 2h
+            address: Gamcheon Culture Village, Busan
+          - name: Lunch in Gamcheon
+            time: "13:30"
+            category: food
+          - name: Jagalchi Fish Market
+            time: "15:30"
+            category: food
+            notes: Largest fish market in Korea — pick fresh seafood for dinner
+            address: 52 Jagalchihaean-ro, Busan
+          - name: Dinner at Jagalchi
+            time: "18:30"
+            category: food
+            address: Jagalchi Market, Busan
+
+      - date: 2026-06-01
+        activities:
+          - name: Haedong Yonggungsa Temple
+            time: "09:00"
+            category: culture
+            notes: Stunning seaside temple — go early before the crowds
+            address: 86 Yonggung-gil, Gijang-gun, Busan
+          - name: Haeundae Beach
+            time: "12:00"
+            category: nature
+            notes: Most famous beach in Korea
+            address: Haeundae-gu, Busan
+          - name: Lunch at Haeundae
+            time: "13:00"
+            category: food
+          - name: Dongbaekseom Island & APEC House
+            time: "15:00"
+            category: nature
+            address: Dongbaek-ro, Haeundae-gu, Busan
+          - name: Dinner in Haeundae
+            time: "19:00"
+            category: food
+            address: Haeundae-gu, Busan
+
+      - date: 2026-06-02
+        activities:
+          - name: Oryukdo Skywalk
+            time: "10:00"
+            category: nature
+            notes: Glass-floor walkway over the sea cliffs
+            address: 62 Oryukdo-ro 129beon-gil, Busan
+          - name: BIFF Square & Gukje Market
+            time: "13:00"
+            category: shopping
+            notes: Street food, vintage, local market
+            address: BIFF Square, Jung-gu, Busan
+          - name: Seomyeon evening
+            time: "18:30"
+            category: entertainment
+            notes: Lively district — good restaurants and bars for a last night
+            address: Seomyeon, Busanjin-gu, Busan
+
+  - name: Jeju
+    country: South Korea
+    arrival: 2026-06-03
+    departure: 2026-06-06
+    accommodation: Hotel Run
+    accommodation_address: 20 Taepyeong-ro 431beon-gil, Seogwipo 63595
+
+    days:
+      - date: 2026-06-03
+        activities:
+          - name: Flight Busan → Jeju
+            time: "12:25"
+            category: transport
+            notes: Depart from Gimhae International Airport (PUS)
+            address: Gimhae International Airport, Busan
+            booking: done
+          - name: Arrive Jeju & check in
+            time: "13:30"
+            category: general
+          - name: Jeju Olle Trail — coastal walk
+            time: "15:00"
+            category: nature
+            notes: Easy first afternoon — Route 7 along the coast
+          - name: Dinner in Jeju City
+            time: "19:00"
+            category: food
+            notes: Try black pork (heukdwaeji) — Jeju specialty
+            address: Jeju City, Jeju
+
+      - date: 2026-06-04
+        activities:
+          - name: Hallasan National Park
+            time: "08:00"
+            category: sport
+            notes: Hike to the crater lake — Eorimok or Yeongsil trail (5–6h)
+            address: Hallasan National Park, Jeju
+          - name: Recovery lunch
+            time: "14:00"
+            category: food
+          - name: Seongsan Ilchulbong (Sunrise Peak)
+            time: "16:00"
+            category: nature
+            notes: UNESCO site — dramatic volcanic cone
+            address: Seongsan Ilchulbong, Seogwipo
+          - name: Dinner in Seogwipo
+            time: "19:30"
+            category: food
+            address: Seogwipo, Jeju
+
+      - date: 2026-06-05
+        activities:
+          - name: Cheonjeyeon Waterfall
+            time: "09:30"
+            category: nature
+            address: 132 Cheonjeyeon-ro, Seogwipo, Jeju
+          - name: Jusangjeolli Cliff
+            time: "11:00"
+            category: nature
+            notes: Dramatic hexagonal basalt columns on the coast
+            address: 36-30 Jungmun-ro, Seogwipo, Jeju
+          - name: Lunch
+            time: "13:00"
+            category: food
+          - name: Manjanggul Lava Tube
+            time: "15:00"
+            category: culture
+            notes: UNESCO site — one of the longest lava tubes in the world
+            address: 182 Manjanggul-gil, Gujwa-eup, Jeju
+          - name: Farewell dinner
+            time: "19:00"
+            category: food
+            notes: Last evening in Korea
+            address: Jeju City, Jeju
+
+  - name: Seoul
+    country: South Korea
+    arrival: 2026-06-06
+    departure: 2026-06-07
+    notes: Transit day — Jeju to Seoul to Munich
+
+    days:
+      - date: 2026-06-06
+        activities:
+          - name: Flight Jeju → Seoul
+            time: "13:25"
+            category: transport
+            notes: Depart from Jeju International Airport (CJU)
+            address: Jeju International Airport, Jeju
+            booking: done
+          - name: Arrive Seoul Gimpo Airport
+            time: "14:30"
+            category: transport
+            notes: Transfer to Incheon Airport — allow 2h (bus or AREX train)
+            address: Gimpo International Airport, Seoul
+          - name: Dinner at Incheon Airport
+            time: "18:30"
+            category: food
+            address: Incheon International Airport, Seoul
+          - name: Flight Seoul → Munich
+            time: "21:50"
+            category: transport
+            notes: Depart from Incheon International Airport (ICN)
+            address: Incheon International Airport, Incheon
+            booking: done
