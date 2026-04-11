@@ -26,7 +26,7 @@ cities:
           - name: Street food snack in Myeong-dong
             time: "17:00"
             category: food
-            notes: Quick bite before heading up Namsan — 15 min walk to the cable car
+            notes: Manger Tteokbokki before heading up Namsan — 15 min walk to the cable car
             address: Myeong-dong, Seoul
           - name: N Seoul Tower — sunset
             time: "18:30"
@@ -44,7 +44,7 @@ cities:
           - name: Gyeongbokgung Palace
             time: "09:00"
             category: culture
-            notes: Hanbok rental optional
+            notes: Releve de la Garde a 9h30 -Hanbok rental optional
             address: Gyeongbokgung, Seoul
           - name: Bukchon Hanok Village
             time: "10:30"
@@ -55,14 +55,19 @@ cities:
             time: "12:30"
             category: food
             address: Insadong, Seoul
-          - name: Korean cooking class
+          - name: Secret Garden Changdeokgu Palace
             time: "14:00"
             category: culture
-            notes: 2–2.5h, central area — stays in the downtown corridor
+            address: Jongno District, Seoul
           - name: Dinner near Myeong-dong
             time: "19:00"
             category: food
             address: Myeong-dong, Seoul
+          - name: Ballade Cheonggyechon
+            time: "21:00"
+            category: walk
+            notes: ballade Han River
+            address: Cheonggyecheon, Jongno District, Seoul
 
       - date: 2026-05-26     # day 3 — DMZ
         activities:
@@ -73,19 +78,24 @@ cities:
           - name: DMZ Tour — Tunnel & Observatory
             time: "09:00"
             category: culture
-            notes: Full day excursion, book in advance
+            notes: Half day excursion, book in advance
             address: Korean Demilitarized Zone
             booking: required
           - name: Return to Seoul
-            time: "15:00"
+            time: "14:00"
             category: transport
-          - name: Dinner near hotel
-            time: "18:00"
+          - name: Gwangjan Market
+            time: "14:30"
+            category: food
+            notes: Manger Mayak Gimbap
+            address: 88 Changgyeonggung-ro, Jongno-gu, Seoul,
+          - name: Dinner ??
+            time: "19:00"
             category: food
             notes: Rest after the DMZ — eat close to Myeong-dong
             address: Myeong-dong, Seoul
           - name: Hongdae — street art, shops & arcade
-            time: "20:00"
+            time: "16:00"
             category: entertainment
             notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
             address: Hongdae, Seoul
@@ -109,6 +119,11 @@ cities:
             category: entertainment
             notes: Seoul Sky observation deck optional
             address: Jamsil, Seoul
+          - name: Seokchon Lake
+            time: "15:00"
+            category: entertainment
+            notes: Seoul Sky observation deck optional
+            address: 잠실6동 Songpa District, Seoul
           - name: Dinner in Jamsil
             time: "18:30"
             category: food
@@ -117,6 +132,10 @@ cities:
             time: "20:00"
             category: general
             address: Banpo Bridge, Seoul
+          - name: Ichon Hangang Park
+            time: "20:45"
+            category: general
+            address: 62 Ichon-ro 72-gil, Yongsan District, Seoul
 
   - name: Gyeongju
     country: South Korea
@@ -130,25 +149,27 @@ cities:
       - date: 2026-05-28     # day 5 — Historic Center
         activities:
           - name: KTX to Gyeongju
-            time: "08:00"
+            time: "11:00"
             category: transport
             address: Seoul Station
             booking: required
-          - name: Daereungwon Tomb Complex
-            time: "10:30"
-            category: culture
-            address: Gyeongju
           - name: Lunch
             time: "12:30"
             category: food
             address: Gyeongju city center
-          - name: Donggung Palace & Wolji Pond
-            time: "14:00"
+
+          - name: Daereungwon Tomb Complex
+            time: "14:30"
             category: culture
             address: Gyeongju
-          - name: Traditional dinner
+          - name: Donggung Palace & Wolji Pond
+            time: "16:00"
+            category: culture
+            address: Gyeongju
+          - name: Traditional dinner- Hanjeongsik
             time: "18:30"
             category: food
+            notes: Manger Bulgolgki + verre de Gyodong beopju
             address: Gyeongju
 
       - date: 2026-05-29     # day 6 — Tohamsan Hike
@@ -177,6 +198,7 @@ cities:
           - name: Recovery dinner
             time: "18:30"
             category: food
+            notes: Manger Gyeongju ppang
             address: Gyeongju
 
       - date: 2026-05-30     # day 7 — Nature & Culture
@@ -185,6 +207,10 @@ cities:
             time: "09:00"
             category: culture
             address: Golgulsa, Gyeongju
+          - name: Korean cooking class
+            time: "10:00"
+            category: culture
+            notes: ??
           - name: Lunch
             time: "12:00"
             category: food
@@ -268,6 +294,11 @@ cities:
             category: shopping
             notes: Street food, vintage, local market
             address: BIFF Square, Jung-gu, Busan
+          - name: Artemuseum
+            time: "14:00"
+            category: culture
+            notes: 2h- Teamlabs
+            address:  29 Haeyang-ro 247beon-gil, Yeongdo-gu, Busan
           - name: Seomyeon evening
             time: "18:30"
             category: entertainment
@@ -300,7 +331,7 @@ cities:
           - name: Dinner in Jeju City
             time: "19:00"
             category: food
-            notes: Try black pork (heukdwaeji) — Jeju specialty
+            notes: Manger black pork (heukdwaeji) grille — Jeju specialty
             address: Jeju City, Jeju
 
       - date: 2026-06-04
