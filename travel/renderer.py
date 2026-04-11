@@ -29,6 +29,7 @@ def render(trip: Trip, output_path: Path, yaml_path: Optional[Path] = None, gith
     env.filters["day_fmt"] = _day_fmt
     env.filters["short_day"] = _short_day
     env.filters["maplink"] = lambda a: f"https://www.google.com/maps/search/?api=1&query={quote_plus(a)}" if a else ""
+    env.tests["in_slot"] = lambda activity, slot: slot in activity.slots
 
     city_colors = {
         city.name: CITY_COLORS[i % len(CITY_COLORS)]

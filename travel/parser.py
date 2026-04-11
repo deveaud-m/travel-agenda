@@ -23,6 +23,7 @@ CATEGORY_ICONS = {
 class Activity:
     name: str
     time: Optional[str] = None
+    end_time: Optional[str] = None
     notes: Optional[str] = None
     booking: Optional[str] = None
     category: str = "general"
@@ -33,19 +34,43 @@ class Activity:
         return CATEGORY_ICONS.get(self.category, "📍")
 
     @property
-    def slot(self) -> str:
-        if self.time:
+    def slots(self) -> list[str]:
+        def _hour(t: Optional[str]) -> Optional[int]:
+            if not t:
+                return None
             try:
-                hour = int(self.time.split(":")[0])
-                if hour < 12:
-                    return "morning"
-                elif hour < 18:
-                    return "afternoon"
-                else:
-                    return "evening"
+                return int(t.split(":")[0])
             except (ValueError, IndexError):
-                pass
-        return "morning"
+                return None
+
+        start = _hour(self.time)
+        if start is None:
+            return ["morning"]
+
+        if self.end_time is None:
+            if start < 12:
+                return ["morning"]
+            elif start < 18:
+                return ["afternoon"]
+            else:
+                return ["evening"]
+
+        end = _hour(self.end_time)
+        if end is None:
+            end = start
+
+        result = []
+        if start < 12:
+            result.append("morning")
+        if start < 18 and end > 12:
+            result.append("afternoon")
+        if end > 18:
+            result.append("evening")
+        return result or ["morning"]
+
+    @property
+    def slot(self) -> str:
+        return self.slots[0]
 
 
 @dataclass
@@ -111,13 +136,26 @@ def _parse_city(data: dict) -> City:
 
 def _parse_day(data: dict) -> Day:
     activities = [_parse_activity(a) for a in data.get("activities", [])]
+    activities.sort(key=lambda a: a.time or "")
     return Day(date=data["date"], activities=activities)
 
 
 def _parse_activity(data: dict) -> Activity:
+    time_raw = data.get("time")
+    start_time = None
+    end_time = None
+    if time_raw:
+        time_str = str(time_raw)
+        if "-" in time_str:
+            parts = time_str.split("-", 1)
+            start_time = parts[0].strip()
+            end_time = parts[1].strip()
+        else:
+            start_time = time_str
     return Activity(
         name=data["name"],
-        time=data.get("time"),
+        time=start_time,
+        end_time=end_time,
         notes=data.get("notes"),
         booking=data.get("booking"),
         category=data.get("category", "general"),

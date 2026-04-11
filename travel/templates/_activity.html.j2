@@ -1,6 +1,6 @@
 <div class="activity-card">
   <div class="activity-top">
-    {% if a.time %}<span class="activity-time">{{ a.time }}</span>{% endif %}
+    {% if a.time %}<span class="activity-time">{{ a.time }}{% if a.end_time %}–{{ a.end_time }}{% endif %}</span>{% endif %}
     <span class="activity-icon">{{ a.icon }}</span>
     <span class="activity-name">{{ a.name }}</span>
   </div>

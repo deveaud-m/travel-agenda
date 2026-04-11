@@ -12,15 +12,22 @@ cities:
       - date: 2026-04-23
         activities:
           - name: Arrive & settle in
-            time: "15:00"
+            time: "10:00"
             category: general
+          - name: Trajet maison
+            time: "12:00"
+            category: transport
           - name: Kosmos Kaffee
             time: "17:00"
             category: food
             notes: Good spot to unwind after the journey
             address: Dachauer Str. 7, 80335 München
+          - name: Luitpoldberg
+            time: "19:00"
+            category: views
           - name: Dinner in the neighbourhood
             time: "19:30"
+            notes: Bulgoki coreen a la maison
             category: food
 
       - date: 2026-04-24
@@ -31,43 +38,57 @@ cities:
             notes: Weekday — much less crowded than the weekend
             address: Am Olympiapark 1, 80809 München
           - name: Olympiapark stroll
-            time: "13:00"
+            time: "11:00"
             category: nature
             address: Spiridon-Louis-Ring 21, 80809 München
-          - name: Lunch near Olympiapark
-            time: "14:00"
+          - name: Lunch
+            time: "13:00"
             category: food
-          - name: Alte Utting
-            time: "19:00"
-            category: entertainment
-            notes: Rooftop bar on a converted boat — great sunset views
-            address: Lagerhausstraße 15, 81369 München
-
-      - date: 2026-04-25
-        activities:
           - name: Frühlingsfest
-            time: "11:00"
+            time: "14:00-17:00"
             category: entertainment
             notes: Munich Spring Festival at Theresienwiese — the whole afternoon here
             address: Theresienwiese, 80339 München
           - name: Bahnwärter Thiel
-            time: "20:00"
+            time: "18:00"
             category: entertainment
             notes: 5 min walk from Theresienwiese — outdoor culture & bar scene
             address: Lagerhausstraße 3, 80339 München
+          - name: Alte Utting
+            time: "20:00"
+            category: entertainment
+            notes: Rooftop bar on a converted boat — great sunset views
+            address: Lagerhausstraße 15, 81369 München
 
       - date: 2026-04-26
         activities:
+          - name: Rando a la Montagne
+            time: "09:00-18:00"
+            category: nature
+            notes: Train, nature, Lac
+            address: Alpes
+          - name: Dinner maison
+            time: "19:00"
+            category: dinner
+            notes: Vin!
+          
+      - date: 2026-04-25
+        activities:
           - name: Viktualienmarkt
-            time: "09:30"
+            time: "13:00"
             category: food
             notes: Sunday morning market — fresh produce, cheese, beer garden
             address: Viktualienmarkt 3, 80331 München
           - name: Isar riverside walk
-            time: "12:00"
+            time: "11:00"
             category: nature
             notes: Relax by the river after the Frühlingsfest
             address: Isar, München
+          - name: Englischer Garten
+            time: "12:00"
+            category: nature
+            notes: Surfing at Eisbach wave, Chinesischer Turm beer garden for lunch
+            address: Englischer Garten, 80538 München
           - name: Dinner in Glockenbachviertel
             time: "19:00"
             category: food
@@ -75,25 +96,25 @@ cities:
 
       - date: 2026-04-27
         activities:
-          - name: Englischer Garten
-            time: "10:00"
-            category: nature
-            notes: Surfing at Eisbach wave, Chinesischer Turm beer garden for lunch
-            address: Englischer Garten, 80538 München
+          - name: shopping
+            time: "10:00-12:00"
+            category: shopping
+            address: Marienplatz, 80331 München
           - name: Marienplatz & Altstadt
-            time: "14:00"
+            time: "12:00"
             category: culture
             address: Marienplatz, 80331 München
-          - name: Farewell dinner
-            time: "19:30"
-            category: food
+          - name: Phil back from work
+            time: "15:30"
+            category: general
+            notes: party !!
+          - name: Drive back to maison
+            time: "23:00"
+            category: transport
             notes: Last evening — pick a favourite spot
 
       - date: 2026-04-28
         activities:
-          - name: Breakfast & pack
-            time: "09:00"
-            category: general
-          - name: Depart Munich
-            time: "12:00"
+          - name: Depart Menninghem
+            time: "06:00"
             category: transport

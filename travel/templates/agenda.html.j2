@@ -326,7 +326,7 @@
 
         {# ── Row 2: Morning ── #}
         {% for day in city.days %}
-        {% set acts = day.activities | selectattr('slot', 'equalto', 'morning') | list %}
+        {% set acts = day.activities | select('in_slot', 'morning') | list %}
         <div class="slot-cell morning{% if day.date == today %} is-today{% endif %}">
           <div class="slot-label">☀️ Morning</div>
           {% if acts %}
@@ -341,7 +341,7 @@
 
         {# ── Row 3: Afternoon ── #}
         {% for day in city.days %}
-        {% set acts = day.activities | selectattr('slot', 'equalto', 'afternoon') | list %}
+        {% set acts = day.activities | select('in_slot', 'afternoon') | list %}
         <div class="slot-cell afternoon{% if day.date == today %} is-today{% endif %}">
           <div class="slot-label">🌤️ Afternoon</div>
           {% if acts %}
@@ -356,7 +356,7 @@
 
         {# ── Row 4: Evening ── #}
         {% for day in city.days %}
-        {% set acts = day.activities | selectattr('slot', 'equalto', 'evening') | list %}
+        {% set acts = day.activities | select('in_slot', 'evening') | list %}
         <div class="slot-cell evening{% if day.date == today %} is-today{% endif %}">
           <div class="slot-label">🌙 Evening</div>
           {% if acts %}
