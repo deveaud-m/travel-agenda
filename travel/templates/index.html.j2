@@ -126,5 +126,18 @@
   {% endfor %}
 </div>
 
+<script>
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    let lastMtime = null;
+    setInterval(async () => {
+      try {
+        const mtime = await fetch('/mtime').then(r => r.text());
+        if (lastMtime === null) { lastMtime = mtime; return; }
+        if (mtime !== lastMtime) window.location.reload();
+      } catch (_) {}
+    }, 1500);
+  }
+</script>
+
 </body>
 </html>

@@ -52,6 +52,18 @@ def serve(yaml_file: Path, port: int):
     server.serve(yaml_file, port)
 
 
+@cli.command("serve-all")
+@click.option("--port", default=5173, show_default=True, help="Local port to listen on.")
+@click.option("--trips-dir", default=None, type=click.Path(path_type=Path), help="Directory with YAML trip files.")
+def serve_all(port: int, trips_dir: Path):
+    """Serve all trips with an index page and live reload."""
+    from . import server
+    directory = trips_dir or TRIPS_DIR
+    if not directory.exists():
+        raise click.ClickException(f"Directory not found: {directory}")
+    server.serve_all(directory, port)
+
+
 @cli.command("render-all")
 def render_all():
     """Render all trips in the trips/ directory and generate an index page."""

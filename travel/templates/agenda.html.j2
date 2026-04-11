@@ -41,7 +41,10 @@
       font-weight: 500;
       background: rgba(255,255,255,0.1);
       border: 1.5px solid;
+      cursor: pointer;
+      transition: background 0.15s;
     }
+    .city-pill:hover { background: rgba(255,255,255,0.22); }
     .edit-btn {
       display: flex;
       align-items: center;
@@ -283,12 +286,14 @@
     <p class="trip-dates">{{ trip.start_date | date_fmt }} → {{ trip.end_date | date_fmt }}</p>
     <div class="city-pills">
       {% for city in trip.cities %}
-      <span class="city-pill" style="border-color: {{ city_colors[city.name] }}; color: {{ city_colors[city.name] }}">
+      <span class="city-pill" style="border-color: {{ city_colors[city.name] }}; color: {{ city_colors[city.name] }}"
+            onclick="scrollToCity({{ loop.index0 }})">
         {{ city.name }}{% if city.country %}, {{ city.country }}{% endif %}
       </span>
       {% endfor %}
     </div>
   </div>
+  <a class="edit-btn" href="index.html">← All trips</a>
   {% if github_edit_url %}
   <a class="edit-btn" href="{{ github_edit_url }}" target="_blank" rel="noopener">✏️ Edit agenda</a>
   {% endif %}
@@ -297,7 +302,7 @@
 <div class="timeline-wrapper">
   <div class="timeline">
     {% for city in trip.cities %}
-    <div class="city-group" style="--city-color: {{ city_colors[city.name] }}">
+    <div id="city-{{ loop.index0 }}" class="city-group" style="--city-color: {{ city_colors[city.name] }}">
 
       <div class="city-band">
         <span>{{ city.name }}{% if city.country %}&thinsp;·&thinsp;{{ city.country }}{% endif %}</span>
@@ -388,6 +393,11 @@
 </div>
 
 <script>
+  function scrollToCity(idx) {
+    const el = document.getElementById('city-' + idx);
+    if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  }
+
   // Live reload: poll for file changes when served locally
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     let lastMtime = null;
