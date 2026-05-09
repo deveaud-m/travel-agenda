@@ -28,11 +28,6 @@ cities:
             category: food
             notes: Manger Tteokbokki before heading up Namsan — 15 min walk to the cable car
             address: Myeong-dong, Seoul
-          - name: N Seoul Tower — sunset
-            time: "18:30"
-            category: entertainment
-            notes: Take the cable car from Myeong-dong, arrive before sunset
-            address: 105 Namsangongwon-ro, Yongsan-gu, Seoul
           - name: Korean massage
             time: "20:30"
             category: general
@@ -59,6 +54,11 @@ cities:
             time: "14:00"
             category: culture
             address: Jongno District, Seoul
+          - name: Hongdae — street art, shops & arcade
+            time: "16:00"
+            category: entertainment
+            notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
+            address: Hongdae, Seoul
           - name: Dinner near Myeong-dong
             time: "19:00"
             category: food
@@ -89,16 +89,16 @@ cities:
             category: food
             notes: Manger Mayak Gimbap
             address: 88 Changgyeonggung-ro, Jongno-gu, Seoul,
+          - name: N Seoul Tower — sunset
+            time: "18:30"
+            category: entertainment
+            notes: Take the cable car from Myeong-dong, arrive before sunset
+            address: 105 Namsangongwon-ro, Yongsan-gu, Seoul
           - name: Dinner ??
-            time: "19:00"
+            time: "20:00"
             category: food
             notes: Rest after the DMZ — eat close to Myeong-dong
             address: Myeong-dong, Seoul
-          - name: Hongdae — street art, shops & arcade
-            time: "16:00"
-            category: entertainment
-            notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
-            address: Hongdae, Seoul
 
       - date: 2026-05-27     # day 4 — Gangnam & Skyline
         activities:
@@ -152,7 +152,7 @@ cities:
             time: "11:00"
             category: transport
             address: Seoul Station
-            booking: required
+            booking: done
           - name: Lunch
             time: "12:30"
             category: food
