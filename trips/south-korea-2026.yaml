@@ -54,11 +54,7 @@ cities:
             time: "14:00"
             category: culture
             address: Jongno District, Seoul
-          - name: Hongdae — street art, shops & arcade
-            time: "16:00"
-            category: entertainment
-            notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
-            address: Hongdae, Seoul
+            booking: required
           - name: Dinner near Myeong-dong
             time: "19:00"
             category: food
@@ -80,7 +76,7 @@ cities:
             category: culture
             notes: Half day excursion, book in advance
             address: Korean Demilitarized Zone
-            booking: required
+            booking: done
           - name: Return to Seoul
             time: "14:00"
             category: transport
@@ -89,6 +85,11 @@ cities:
             category: food
             notes: Manger Mayak Gimbap
             address: 88 Changgyeonggung-ro, Jongno-gu, Seoul,
+          - name: Hongdae — street art, shops & arcade
+            time: "16:00"
+            category: entertainment
+            notes: 20 min by metro from Myeong-dong (Line 4 → Line 2) — evening energy
+            address: Hongdae, Seoul
           - name: N Seoul Tower — sunset
             time: "18:30"
             category: entertainment
