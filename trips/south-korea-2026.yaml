@@ -188,8 +188,11 @@ cities:
             category: sport
             notes: Summit break
             address: Tohamsan Mountain, Gyeongju
+          - name: Korean cooking class
+            time: "12:30-14:30"
+            category: culture
           - name: Seokguram Grotto
-            time: "13:00"
+            time: "14:30"
             category: culture
             address: Seokguram, Gyeongju
           - name: Return to city
@@ -208,10 +211,6 @@ cities:
             time: "09:00"
             category: culture
             address: Golgulsa, Gyeongju
-          - name: Korean cooking class
-            time: "10:00"
-            category: culture
-            notes: ??
           - name: Lunch
             time: "12:00"
             category: food
