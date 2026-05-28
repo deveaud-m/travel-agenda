@@ -184,8 +184,9 @@ cities:
             category: culture
             address: Gyeongju city center
           - name: Korean cooking class
-            time: "12:30-14:30"
+            time: "12:30"
             category: culture
+            notes: Class until 14:30
           - name: Bulguksa Temple
             time: "14:30"
             category: culture
@@ -204,23 +205,34 @@ cities:
             notes: Manger Gyeongju ppang
             address: Gyeongju
 
-      - date: 2026-05-30     # day 7 — Nature & Culture
+      - date: 2026-05-30     # day 7 — Namsan long hike
         activities:
-          - name: Golgulsa Temple
-            time: "09:00"
-            category: culture
-            address: Golgulsa, Gyeongju
-          - name: Lunch
-            time: "12:00"
+          - name: Early breakfast
+            time: "07:30"
             category: food
             address: Gyeongju
-          - name: Yangdong Folk Village
-            time: "14:00"
-            category: culture
-            address: Yangdong Folk Village, Gyeongju
-          - name: Dinner
-            time: "18:30"
+          - name: Start Namsan hike
+            time: "08:30"
+            category: sport
+            address: Namsan trailhead, Gyeongju
+          - name: Namsan summit
+            time: "12:00"
+            category: sport
+            notes: Long hiking day with summit break
+            address: Namsan Mountain, Gyeongju
+          - name: Late lunch after descent
+            time: "14:30"
             category: food
+            address: Gyeongju
+          - name: Riverside near Woljeonggyo Bridge
+            time: "17:00"
+            category: walk
+            notes: Relaxed walk by the river after the hike
+            address: Woljeonggyo Bridge, Gyeongju
+          - name: Slow evening
+            time: "19:00"
+            category: general
+            notes: Easy dinner and quiet evening close to the accommodation
             address: Gyeongju
 
   - name: Busan
