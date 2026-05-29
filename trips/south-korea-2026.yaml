@@ -288,33 +288,67 @@ cities:
             time: "15:00"
             category: nature
             address: Dongbaek-ro, Haeundae-gu, Busan
-          - name: Dinner in Haeundae
+          - name: Gwangalli evening
             time: "19:00"
-            category: food
-            address: Haeundae-gu, Busan
+            category: entertainment
+            notes: Vue sur le pont Gwangan · Restaurants · Promenade en bord de mer
+            address: Gwangalli Beach, Busan
 
       - date: 2026-06-02
         activities:
-          - name: Oryukdo Skywalk
-            time: "10:00"
+          - name: Taejongdae
+            time: "09:00-12:00"
             category: nature
-            notes: Glass-floor walkway over the sea cliffs
-            address: 62 Oryukdo-ro 129beon-gil, Busan
-          - name: BIFF Square & Gukje Market
-            time: "13:00"
-            category: shopping
-            notes: Street food, vintage, local market
-            address: BIFF Square, Jung-gu, Busan
-          - name: Artemuseum
-            time: "14:00"
+            notes: Falaises · Forêt · Panoramas maritimes
+            address: Taejongdae Resort Park, Yeongdo-gu, Busan
+          - name: Lunch in Yeongdo
+            time: "12:30"
+            category: food
+          - name: Arte Museum Busan
+            time: "14:00-17:00"
             category: culture
-            notes: 2h- Teamlabs
-            address:  29 Haeyang-ro 247beon-gil, Yeongdo-gu, Busan
-          - name: Seomyeon evening
-            time: "18:30"
+            notes: Expositions immersives · Installations interactives · Activité idéale avec les enfants
+            address: 29 Haeyang-ro 247beon-gil, Yeongdo-gu, Busan
+          - name: Coffee break with harbor view
+            time: "17:30"
+            category: general
+          - name: Last evening in Busan
+            time: "19:00"
             category: entertainment
-            notes: Lively district — good restaurants and bars for a last night
-            address: Seomyeon, Busanjin-gu, Busan
+            notes: Option among Nampo-dong, Jagalchi, or Gwangalli
+
+      - date: 2026-06-03
+        activities:
+          - name: Check-out
+            time: "08:30"
+            category: general
+          - name: Taxi to Gimhae Airport
+            time: "08:45"
+            category: transport
+          - name: Recommended airport arrival
+            time: "10:00"
+            category: transport
+            address: Gimhae International Airport, Busan
+          - name: Flight to Jeju
+            time: "12:25"
+            category: transport
+            address: Gimhae International Airport, Busan
+
+    optional:
+      - title: Gamcheon Culture Village
+        reason: À ajouter uniquement si météo défavorable ou si intérêt particulier pour le street art
+      - title: Songdo Skywalk
+        reason: Belle option au coucher du soleil
+      - title: Bosu Book Street
+        reason: Quartier authentique peu fréquenté par les touristes
+
+    priorities:
+      - Arte Museum Busan
+      - Haedong Yonggungsa
+      - Huinnyeoul Culture Village
+      - Gwangalli de nuit
+      - Taejongdae
+      - Jagalchi Market
 
   - name: Jeju
     country: South Korea
