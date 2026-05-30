@@ -245,29 +245,36 @@ cities:
     days:
       - date: 2026-05-31
         activities:
-          - name: KTX to Busan
-            time: "09:00"
+          - name: Arrive in Busan & hotel check-in
+            time: "11:00"
             category: transport
-            notes: ~45 min from Gyeongju
-            address: Gyeongju Station
-            booking: required
-          - name: Gamcheon Culture Village
-            time: "11:30"
-            category: culture
-            notes: Colourful hillside village, plan 2h
-            address: Gamcheon Culture Village, Busan
-          - name: Lunch in Gamcheon
-            time: "13:30"
+            notes: Arrival around 11:00, then check-in at the hotel
+            address: 21 Jagalchi-ro, Jung-gu, Busan 600-046
+          - name: Lunch at Jagalchi Fish Market
+            time: "12:30"
             category: food
-          - name: Jagalchi Fish Market
-            time: "15:30"
-            category: food
-            notes: Largest fish market in Korea — pick fresh seafood for dinner
             address: 52 Jagalchihaean-ro, Busan
-          - name: Dinner at Jagalchi
-            time: "18:30"
+          - name: Visit Nampo-dong
+            time: "14:00"
+            category: culture
+            address: Nampo-dong, Jung-gu, Busan
+          - name: Huinnyeoul Culture Village
+            time: "15:30"
+            category: culture
+            address: Huinnyeoul Culture Village, Yeongdo-gu, Busan
+          - name: Promenade sur le sentier côtier de Yeongdo
+            time: "18:00"
+            category: walk
+            address: Yeongdo Coastal Trail, Busan
+          - name: Jagalchi Fish Market
+            time: "19:30"
             category: food
-            address: Jagalchi Market, Busan
+            notes: Return to Jagalchi for dinner
+            address: 52 Jagalchihaean-ro, Busan
+          - name: BIFF Street Market by night
+            time: "21:00"
+            category: entertainment
+            address: BIFF Square, Nampo-dong, Busan
 
       - date: 2026-06-01
         activities:
